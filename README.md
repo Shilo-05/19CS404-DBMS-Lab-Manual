@@ -1,4 +1,4 @@
-# 🧪 DBMS Laboratory Manual Submission
+# DBMS Laboratory Manual Submission
 
 **👨‍🎓 Learner Name:** Oswald Shilo  
 **🆔 Registration No:** 212223040139  
