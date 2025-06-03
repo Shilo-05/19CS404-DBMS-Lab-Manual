@@ -1,113 +1,127 @@
 # Experiment 1: Entity-Relationship (ER) Diagram
 
-## 🎯 Objective:
+#### Name: Oswald Shilo  
+#### Registration No: 212223040139  
+
+---
+
+## 🎯 Objective
 To understand and apply the concepts of ER modeling by creating an ER diagram for a real-world application.
 
-## 📚 Purpose:
+---
+
+## 📚 Purpose
 The purpose of this workshop is to gain hands-on experience in designing ER diagrams that visually represent the structure of a database including entities, relationships, attributes, and constraints.
 
 ---
 
-## 🧪 Choose One Scenario:
-
-### 🔹 Scenario 1: University Database
-Design a database to manage students, instructors, programs, courses, and student enrollments. Include prerequisites for courses.
-
-**User Requirements:**
-- Academic programs grouped under departments.
-- Students have admission number, name, DOB, contact info.
-- Instructors with staff number, contact info, etc.
-- Courses have number, name, credits.
-- Track course enrollments by students and enrollment date.
-- Add support for prerequisites (some courses require others).
+## 🧪 Scenario Chosen
+**Scenario: Hospital Database**
 
 ---
 
-### 🔹 Scenario 2: Hospital Database
-Design a database for patient management, appointments, medical records, and billing.
-
-**User Requirements:**
-- Patient details including contact and insurance.
-- Doctors and their departments, contact info, specialization.
-- Appointments with reason, time, patient-doctor link.
-- Medical records with treatments, diagnosis, test results.
-- Billing and payment details for each appointment.
-
----
-
-## 📝 Tasks:
-1. Identify entities, relationships, and attributes.
-2. Draw the ER diagram using any tool (draw.io, dbdiagram.io, hand-drawn and scanned).
-3. Include:
-   - Cardinality & participation constraints
-   - Prerequisites for University OR Billing for Hospital
-4. Explain:
-   - Why you chose the entities and relationships.
-   - How you modeled prerequisites or billing.
-
-# ER Diagram Submission - Abdur Rahman Basil (212223040002)
-
-## Scenario Chosen:
-University / Hospital (choose one)
-
-## ER Diagram:
+## 🗂️ ER Diagram
 ![Hospital ER](https://github.com/user-attachments/assets/5890c2bb-9551-497d-8ddd-759dad4110d9)
 
-## Entities and Attributes:
-- Department of Specialization - Department ID, Head of Department, Department Name
-- Doctor - Name (First name, Last name), Specialization, Contact (Email, Phone No.)
-- Patient - Patient ID, Full Name, Contact (Email, Phone No.)
-- Appointments - Appointment ID, Patient Name, Doctor Name, Date and Time
-- Medical Records - Medical Record ID, Patient Name, Doctor Name, Diagnoses, Medication
-...
+---
 
-## Relationships and Constraints:
-Relationship1: consists of
-Entities involved: Department of Specialization — Doctor
-Cardinality:
-One Department consists of many Doctors (1:N)
-One Doctor belongs to one Department (N:1)
+## 🧱 Entities and Attributes
 
-Relationship2: treats
-Entities involved: Doctor — Patient
-Cardinality:
-One Doctor can treat many Patients (1:N)
-One Patient can be treated by one Doctor (N:1)
+- **Department of Specialization**
+  - Department ID
+  - Department Name
+  - Head of Department
 
-Relationship3: schedules
-Entities involved: Patient — Appointments
-Cardinality:
-One Patient can schedule many Appointments (1:N)
-One Appointment is scheduled by one Patient (N:1)
+- **Doctor**
+  - First Name
+  - Last Name
+  - Specialization
+  - Email
+  - Phone No.
 
-Relationship4: collect 
-Entities involved: Appointments — Medical Records
-Cardinality:
-One Appointment can collect many Medical Records (1:N)
-One Medical Record is linked to one Appointment (N:1)
-...
+- **Patient**
+  - Patient ID
+  - Full Name
+  - Email
+  - Phone No.
 
-## Extension (Prerequisite / Billing):
-For prerequisites, the design includes a relationship between Appointments and Medical Records to model the sequence of steps in medical treatment. In this context, the Medical Records are created after the Appointment takes place, which ensures the correct order of events and the proper documentation of the patient's treatment.
+- **Appointments**
+  - Appointment ID
+  - Patient Name
+  - Doctor Name
+  - Date
+  - Time
 
-## Design Choices:
-Entities:
-Department of Specialization: This is included to group doctors into different specialties and link them to the relevant department. It helps organize the hospital's operations into meaningful divisions.
-Doctor: This entity captures important details about medical staff, such as their specialization and contact details, which are crucial for identifying the right doctor for a patient's needs.
-Patient: This entity stores patient information, ensuring a proper linkage to appointments and medical records.
-Appointments: This entity models the scheduling of visits between patients and doctors, capturing necessary details like date, time, and the involved individuals.
-Medical Records: This stores the diagnoses and medication prescribed to patients, linked to specific appointments and doctors.
+- **Medical Records**
+  - Medical Record ID
+  - Patient Name
+  - Doctor Name
+  - Diagnosis
+  - Medication
 
-Relationships:
-Department of Specialization — Doctor (1:N): This relationship ensures that doctors are associated with their respective departments. One department can have many doctors, but each doctor belongs to a single department, simplifying the management of medical staff.
-Doctor — Patient (1:N): This relationship ensures that one doctor can treat multiple patients but that each patient is linked to a specific doctor for treatment continuity.
-Patient — Appointments (1:N): The patient can schedule multiple appointments, and each appointment is associated with a specific patient. This relationship also allows easy tracking of the patient's visit history.
-Appointments — Medical Records (1:N): Each appointment results in medical records that document the diagnoses and treatments prescribed by the doctor. This relationship reflects the logical flow of medical treatment.
+---
 
-Assumptions:
-No Ambiguity in Specializations: Doctors have only one specialization, and patients are treated by doctors based on their conditions and the doctor's expertise.
-Appointments and Medical Records: Each appointment generates a single medical record. A patient could have multiple appointments, but each one will have its own associated medical record.
-Patients and Billing: The Billing entity is assumed to be handled after each appointment, reflecting the services provided during the visit.
+## 🔗 Relationships and Constraints
 
-## RESULT:
-Hence, the concepts of ER modeling is understood and applied by creating an ER diagram for a real-world application.
+- **`consists of`**
+  - Entities: Department of Specialization — Doctor  
+  - Cardinality: One Department → Many Doctors (1:N)  
+  - Participation: Total on Doctor
+
+- **`treats`**
+  - Entities: Doctor — Patient  
+  - Cardinality: One Doctor → Many Patients (1:N)  
+  - Participation: Total on Patient
+
+- **`schedules`**
+  - Entities: Patient — Appointments  
+  - Cardinality: One Patient → Many Appointments (1:N)  
+  - Participation: Partial on Appointment
+
+- **`collects`**
+  - Entities: Appointments — Medical Records  
+  - Cardinality: One Appointment → One Medical Record (1:1)  
+  - Participation: Total on Medical Record
+
+---
+
+## 💳 Extension: Billing (Optional)
+
+In this design, the billing aspect is assumed to occur **after each appointment**, based on the services rendered. While not explicitly modeled in the ER diagram provided, this could be extended using an additional `Billing` entity linked to `Appointments`, capturing:
+
+- Billing ID
+- Appointment ID (FK)
+- Amount
+- Payment Method
+- Payment Date
+
+---
+
+## 📐 Design Choices
+
+### ➤ Entities:
+- **Department of Specialization**: Organizes doctors based on their specialties, aiding administrative structure.
+- **Doctor**: Represents medical professionals with their qualifications and contact information.
+- **Patient**: Central to the system, capturing their personal and contact details.
+- **Appointments**: Connects patients and doctors at specific times for tracking interactions.
+- **Medical Records**: Documents diagnoses and treatments for patient history and continuity of care.
+
+### ➤ Relationships:
+- **Department → Doctor (1:N)**: Each doctor belongs to a department; one department can have many doctors.
+- **Doctor → Patient (1:N)**: A doctor may treat many patients.
+- **Patient → Appointments (1:N)**: A patient can schedule multiple appointments.
+- **Appointments → Medical Records (1:1)**: Each appointment results in exactly one medical record.
+
+---
+
+## 🧠 Assumptions
+
+- **Single Specialization per Doctor**: Each doctor has one primary specialization.
+- **One Medical Record per Appointment**: Each appointment corresponds to one unique medical record.
+- **Doctor Assignment is Static per Appointment**: Each appointment is between one patient and one doctor.
+- **Billing is Event-Based**: Billing occurs post-appointment and reflects services provided during that session.
+
+---
+
+## ✅ RESULT
+Hence, the concepts of ER modeling were understood and applied effectively by creating an ER diagram for a real-world hospital application.
